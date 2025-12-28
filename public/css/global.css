@@ -1,0 +1,8 @@
+@font-face {
+    font-family: Mandala;
+    src: url("../fonts/Mandala/Mandala\ Bold.otf");
+}
+
+.font-mandala {
+    font-family: Mandala;
+}
