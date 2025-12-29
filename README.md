@@ -55,3 +55,4 @@ Project ini dibangun sebagai latihan membangun marketplace modern dengan fokus p
 - **Database**: MySQL  
 - **Templating**: Blade  
 - **Styling**: CSS  
+# NJedia
