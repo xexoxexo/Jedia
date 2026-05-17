@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\SometimesEncrypted;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,10 @@ class Merchant extends Model
         'user_id',
         'name',
         'phone',
+    ];
+
+    protected $casts = [
+        'phone' => SometimesEncrypted::class,
     ];
 
     public function location()
@@ -43,18 +48,34 @@ class Merchant extends Model
 
     public function pendings()
     {
-        return $this->hasManyThrough(TransactionDetail::class, Product::class)->withTrashedParents()->where('status', 'Pending');
+        return $this->hasManyThrough(TransactionDetail::class, Product::class)
+            ->withTrashedParents()
+            ->where('status', 'Pending')
+            ->whereHas('header', function ($query) {
+                $query->whereNull('payment_status')
+                    ->orWhereIn('payment_status', ['settlement', 'capture']);
+            });
     }
 
     public function shippings()
     {
-        return $this->hasManyThrough(TransactionDetail::class, Product::class)->withTrashedParents()->where('status', 'Shipping');
+        return $this->hasManyThrough(TransactionDetail::class, Product::class)
+            ->withTrashedParents()
+            ->where('status', 'Shipping')
+            ->whereHas('header', function ($query) {
+                $query->whereNull('payment_status')
+                    ->orWhereIn('payment_status', ['settlement', 'capture']);
+            });
     }
 
     public function transactions()
     {
         return $this->hasManyThrough(TransactionDetail::class, Product::class)->withTrashedParents()
-            ->whereIn('status', ['Rejected', 'Completed']);
+            ->whereIn('status', ['Rejected', 'Completed'])
+            ->whereHas('header', function ($query) {
+                $query->whereNull('payment_status')
+                    ->orWhereIn('payment_status', ['settlement', 'capture']);
+            });
     }
 
     public function getBannerImage()

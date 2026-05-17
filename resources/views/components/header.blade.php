@@ -1,5 +1,5 @@
 <header>
-    <div class="flex justify-between px-8 py-2 bg-slate-100 text-sm text-gray-dark">
+    <div class="hidden lg:flex justify-between px-8 py-2 bg-slate-100 text-sm text-gray-dark">
         <div>
             <a href="" class="hover:text-primary flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -18,8 +18,8 @@
         </div>
     </div>
 
-    <div class="flex justify-between items-start px-8 py-4 bg-white border-b border-b-gray-light text-sm gap-8">
-        <div class="flex items-end gap-2">
+    <div class="flex flex-col md:flex-row justify-between md:items-start px-4 md:px-8 py-4 bg-white border-b border-b-gray-light text-sm gap-4 md:gap-8">
+        <div class="flex items-center md:items-end gap-2">
             <div class="h-8 flex items-center">
                 <x-logo />
             </div>
@@ -29,22 +29,30 @@
             @endif
         </div>
 
-        <div class="flex-grow">
+        <div class="flex-grow order-3 md:order-none w-full md:w-auto">
             <form action="{{ route('home.search') }}" method="GET">
                 <x-form.input type="search" name="keyword" value="{{ Request::get('keyword') }}" placeholder="Search" required/>
             </form>
 
             @isset($recommendations)
-                <div class="flex gap-4 text-sm text-gray mt-4">
+                <div class="hidden md:flex gap-4 text-sm text-gray mt-4">
                     @foreach ($recommendations as $recommendation)
                         <a href="{{ route('home.search', ['keyword' => $recommendation->name]) }}" name="keyword" class="hover:text-primary">{{ $recommendation->name }}</a>
                     @endforeach
                 </div>
             @endisset
+            <div class="flex flex-wrap gap-2 text-xs mt-3">
+                <a href="{{ route('imk.sus') }}" class="px-2 py-1 rounded border border-gray-light text-gray-700 hover:border-primary hover:text-primary">
+                    IMK SUS
+                </a>
+                <a href="{{ route('imk.visualization') }}" class="px-2 py-1 rounded border border-gray-light text-gray-700 hover:border-primary hover:text-primary">
+                    IMK Visualisasi
+                </a>
+            </div>
         </div>
 
         @if (Auth::check())
-            <div class="flex items-center gap-4 h-8">
+            <div class="flex items-center gap-4 h-8 order-2">
                 <a href="{{ route('cart.index') }}" class="relative text-black hover:text-primary @yield('cart')">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
@@ -64,20 +72,20 @@
             </div>
 
             @if (Auth::user()->merchant != null)
-                <a href="{{ route('merchant.index') }}" class="flex items-center gap-2 text-black hover:text-primary @yield('merchant')">
+                <a href="{{ route('merchant.index') }}" class="hidden md:flex items-center gap-2 text-black hover:text-primary @yield('merchant')">
                     <img src="{{ asset(Auth::user()->merchant->getImage()) }}" alt="" class="w-8 h-8 rounded-full object-cover">
                     <p>@str_limit(Auth::user()->merchant->name, 10)</p>
                 </a>
             @else
-                <x-button variant="primary" outline href="{{ route('merchant.register.index') }}">Be Merchant</x-button>
+                <x-button variant="primary" outline href="{{ route('merchant.register.index') }}" class="hidden md:inline-flex">Be Merchant</x-button>
             @endif
 
             <a href="{{ route('general.index') }}" class="flex items-center gap-2 text-black hover:text-primary @yield('profile')">
                 <img src="{{ asset(Auth::user()->getImage()) }}" alt="" class="w-8 h-8 rounded-full">
-                <p>{{ Auth::user()->username }}</p>
+                <p class="hidden md:block">{{ Auth::user()->username }}</p>
             </a>
         @else
-            <div class="flex gap-2">
+            <div class="flex gap-2 order-2">
                 <x-button href="{{ route('login.index') }}" variant="primary">Login</x-button>
                 <x-button href="{{ route('register.index') }}" variant="primary" outline>Register</x-button>
             </div>

@@ -6,7 +6,7 @@
     <style>
         .slider {
             display: flex;
-            aspect-ratio: 16 / 5;
+            aspect-ratio: 16 / 6;
             overflow-x: hidden;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
@@ -44,6 +44,27 @@
 @endpush
 
 @section('content')
+    <section class="rounded-xl border border-gray-light bg-gradient-to-r from-emerald-50 to-white p-6 mb-8">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+            <div>
+                <p class="text-xs tracking-wider text-gray uppercase mb-2">Landing Page Ready</p>
+                <h1 class="text-2xl lg:text-3xl font-bold text-black mb-2">Belanja Lebih Mudah di TokoNJedia</h1>
+                <p class="text-gray max-w-2xl">
+                    Temukan produk favorit, kelola transaksi, dan checkout cepat dalam satu platform marketplace.
+                    Halaman ini juga sudah dilengkapi akses cepat untuk kebutuhan evaluasi IMK.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="{{ route('imk.sus') }}" class="px-4 py-2 rounded-md bg-primary text-white font-semibold border border-primary hover:bg-white hover:text-primary">
+                    Isi SUS / Kuesioner
+                </a>
+                <a href="{{ route('imk.visualization') }}" class="px-4 py-2 rounded-md border border-primary text-primary font-semibold hover:bg-primary hover:text-white">
+                    Lihat Visualisasi
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="relative mt-0 mb-8 mx-auto">
         <div class="slider rounded-lg">
             @foreach ($promos as $key => $promo)
@@ -59,11 +80,11 @@
         </div>
     </section>
 
-    <section class="flex gap-8 p-4 rounded-lg border border-gray-light mb-8">
-        <div class="w-1/2">
+    <section class="flex flex-col lg:flex-row gap-8 p-4 rounded-lg border border-gray-light mb-8">
+        <div class="w-full lg:w-1/2">
             <p class="text-xl font-bold mb-4 text-black">Favorite Categories</p>
 
-            <div class="flex gap-2 items-start">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 items-start">
                 @foreach ($categories as $key => $category)
                     <a href="{{ route('categories.show', ['id' => $category->id]) }}" class="flex-1 p-4 border border-gray-light text-center rounded-md">
                         <img src="{{ $category->products[0]->images[0]->image }}" alt="" class="block w-full aspect-[4/3] rounded-md object-cover mb-2">
@@ -72,7 +93,7 @@
                 @endforeach
             </div>
         </div>
-        <form action="{{ route('bill.store') }}" method="POST" class="w-1/2">
+        <form action="{{ route('bill.store') }}" method="POST" class="w-full lg:w-1/2">
             @csrf
 
             <p class="text-xl font-bold mb-4 text-black">Top up & Bills</p>
@@ -100,12 +121,12 @@
     @if (date('H') >= 22 && date('H') <= 23)
         <section class="rounded-lg mb-16">
             <p class="text-sm text-black font-bold">Flash Sale</p>
-            <div class="flex items-end gap-4 mb-12 text-black">
+            <div class="flex flex-col md:flex-row md:items-end gap-4 mb-12 text-black">
                 <p class="text-xl font-bold">Chasing Old Date Discount</p>
                 <p class="flex items-end gap-2 text-gray">Ends in <span class="text-white px-2 py-1 bg-red rounded-md" id=hour-left>{{ str_pad($hourLeft, 2, '0', STR_PAD_LEFT) }}</span> : <span class="text-white px-2 py-1 bg-red rounded-md" id="minute-left">{{ str_pad($minuteLeft, 2, '0', STR_PAD_LEFT) }}</span> : <span class="text-white px-2 py-1 bg-red rounded-md" id="second-left">{{ str_pad($secondLeft, 2, '0', STR_PAD_LEFT) }}</span></p>
             </div>
             <div class="flex flex-wrap relative justify-end -m-2">
-                <div class="bg-green-100 absolute left-2 px-12 top-1/2 -translate-y-1/2 rounded-lg w-80">
+                <div class="hidden lg:block bg-green-100 absolute left-2 px-12 top-1/2 -translate-y-1/2 rounded-lg w-80">
                     <img src="{{ asset('img/general/flash-sale.webp') }}" alt="" class="h-80 object-cover">
                 </div>
                 @foreach ($flash_sale_products as $flash_sale_product)
@@ -130,7 +151,7 @@
 
                 let hourLeft = {{ $hourLeft }};
                 let minuteLeft = {{ $minuteLeft }};
-                let secondLeft = {{ $hourLeft }};
+                let secondLeft = {{ $secondLeft }};
 
                 setInterval(() => {
                     d = new Date();

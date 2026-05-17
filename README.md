@@ -55,4 +55,22 @@ Project ini dibangun sebagai latihan membangun marketplace modern dengan fokus p
 - **Database**: MySQL  
 - **Templating**: Blade  
 - **Styling**: CSS  
+
+## UTS Support (IMK + Database)
+
+- IMK SUS page: `/imk/sus`
+- IMK visualization page: `/imk/visualization`
+- IMK guide: `docs/UTS_IMK_GUIDE.md`
+- Database guide: `docs/UTS_DATABASE_GUIDE.md`
+- Timeline guide: `docs/UTS_TIMELINE_SENIN_RABU.md`
+
+### Database helper scripts (PowerShell)
+
+- Check MySQL env: `.\scripts\db\check_mysql_env.ps1`
+- Seed + validate count: `.\scripts\db\run_seed_and_validate.ps1`
+- Import Excel/CSV to MySQL: `.\scripts\db\run_import_excel.ps1`
+
+### Validation SQL
+
+- `scripts/db/validate_seed_counts.sql`
 # NJedia

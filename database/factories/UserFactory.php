@@ -3,8 +3,6 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -18,25 +16,14 @@ class UserFactory extends Factory
      */
     public function definition()
     {
-        // return [
-        //     'name' => fake()->name(),
-        //     'email' => fake()->safeEmail(),
-        //     'email_verified_at' => now(),
-        //     'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        //     'remember_token' => Str::random(10),
-        // ];
-
         return [
-            'username' => $this->faker->name(),
+            'username' => $this->faker->userName(),
             'email' => $this->faker->unique()->safeEmail(),
-            'password' => $this->faker->password(),
-            'image' => function () {
-                $filename = uniqid() . '.jpg';
-
-                Storage::disk('public')->put('user-images/' . $filename, file_get_contents('https://source.unsplash.com/random'));
-
-                return 'storage/user-images/' . $filename;
-            },
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'phone' => $this->faker->numerify('08##########'),
+            'dob' => $this->faker->dateTimeBetween('-55 years', '-17 years')->format('Y-m-d'),
+            'gender' => $this->faker->randomElement(['male', 'female']),
+            'image' => 'img/logo/user.png',
         ];
     }
 

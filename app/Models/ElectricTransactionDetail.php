@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\SometimesEncrypted;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,5 +15,9 @@ class ElectricTransactionDetail extends Model
         'electric_token',
         'subscription_number',
         'nominal',
+    ];
+
+    protected $casts = [
+        'subscription_number' => SometimesEncrypted::class,
     ];
 }

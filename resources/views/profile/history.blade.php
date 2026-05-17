@@ -44,6 +44,9 @@
                                     <p>{{ date('d M Y', strtotime($th->date)) }}</p>
                                     <p>{{ date('H:i', strtotime($th->date)) }}</p>
                                     @switch($td->status)
+                                        @case('Awaiting Payment')
+                                            <p class="text-gray-600 bg-gray-100 px-2">{{ $td->status }}</p>
+                                            @break
                                         @case('Pending')
                                             <p class="text-yellow-500 bg-yellow-100 px-2">{{ $td->status }}</p>
                                             @break
@@ -60,6 +63,15 @@
                                     <p class="text-gray">{{ $th->id }}</p>
                                 </div>
                                 <p class="font-bold mb-4">{{ $td->product->merchant->name }}</p>
+                                @if ($th->payment_gateway === 'midtrans')
+                                    <p class="text-sm text-gray mb-4">
+                                        Payment Status:
+                                        <span class="text-black font-semibold">{{ strtoupper($th->payment_status ?? 'pending') }}</span>
+                                        @if ($th->payment_method)
+                                            <span class="text-gray">({{ $th->payment_method }})</span>
+                                        @endif
+                                    </p>
+                                @endif
                                 <div class="flex gap-4 text-black">
                                     <a href="{{ route('products.show', ['id' => $td->product->id]) }}" class="w-16 h-16">
                                         <img src="{{ asset($td->product->images[0]->image) }}" alt="" class="w-full h-full object-cover rounded-lg">
@@ -77,6 +89,13 @@
                                         </div>
                                         <div>
                                             @switch($td->status)
+                                                @case('Awaiting Payment')
+                                                    @if ($th->payment_redirect_url)
+                                                        <x-button href="{{ $th->payment_redirect_url }}" variant="primary">Continue Payment</x-button>
+                                                    @else
+                                                        <p class="text-sm text-gray">Waiting for payment link.</p>
+                                                    @endif
+                                                    @break
                                                 @case('Pending')
                                                     <form action="{{ route('chats.redirect', ['merchant_id' => $td->product->merchant->id]) }}" method="POST">
                                                         @csrf

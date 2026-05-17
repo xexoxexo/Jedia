@@ -6,7 +6,6 @@ use App\Models\Location;
 use App\Models\Merchant;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Merchant>
@@ -20,24 +19,14 @@ class MerchantFactory extends Factory
      */
     public function definition()
     {
-        $user_id = $this->faker->unique()->randomElement(User::pluck('id'));
+        static $userIds = null;
+        $userIds = $userIds ?? User::pluck('id')->all();
+        $user_id = $this->faker->unique()->randomElement($userIds);
 
         return [
             'name' => $this->faker->name(),
-            'image' => function () {
-                $filename = uniqid() . '.jpg';
-
-                $image = Storage::disk('public')->put('merchant/images/' . $filename, file_get_contents('https://source.unsplash.com/random'));
-
-                return 'storage/merchant/images/' . $filename;
-            },
-            'banner_image' => function () {
-                $filename = uniqid() . '.jpg';
-
-                $image = Storage::disk('public')->put('merchant/banner-images/' . $filename, file_get_contents('https://source.unsplash.com/random'));
-
-                return 'storage/merchant/banner-images/' . $filename;
-            },
+            'image' => 'img/logo/logo.png',
+            'banner_image' => 'img/logo/banner-merchant.jpeg',
             'description' => $this->faker->text(50),
             'catch_phrase' => $this->faker->words(10, true),
             'full_description' => $this->faker->sentence(18),
@@ -58,7 +47,7 @@ class MerchantFactory extends Factory
                 'locationable_type' => 'merchant',
                 'locationable_id' => $merchant->id,
                 'latitude' => $this->faker->latitude(),
-                'longitude' => $this->faker->latitude(),
+                'longitude' => $this->faker->longitude(),
             ]);
         });
     }

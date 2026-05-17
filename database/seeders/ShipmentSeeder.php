@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Shipment;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ShipmentSeeder extends Seeder
@@ -15,30 +14,35 @@ class ShipmentSeeder extends Seeder
      */
     public function run()
     {
-        $shipment1 = Shipment::create([
-            'name' => 'Regular',
-            'base_price' => 10000,
-            'variable_price' => 20000,
-        ]);
-        $shipment2 = Shipment::create([
-            'name' => 'Next Day',
-            'base_price' => 30000,
-            'variable_price' => 50000,
-        ]);
-        $shipment3 = Shipment::create([
-            'name' => 'Instant 3 Jam',
-            'base_price' => 100000,
-            'variable_price' => 500000,
-        ]);
-        $shipment4 = Shipment::create([
-            'name' => 'Same Day',
-            'base_price' => 50000,
-            'variable_price' => 100000,
-        ]);
-        $shipment5 = Shipment::create([
-            'name' => 'Cargo',
-            'base_price' => 5000,
-            'variable_price' => 10000,
-        ]);
+        $shipmentNames = [
+            'Regular',
+            'Next Day',
+            'Instant 3 Jam',
+            'Same Day',
+            'Cargo',
+            'Hemat',
+            'Jumbo',
+            'Express',
+            'Weekend Delivery',
+            'Night Service',
+            'International Economy',
+            'International Priority',
+            'Frozen Delivery',
+            'Document Courier',
+            'Eco Green',
+            'Flash 2 Jam',
+            'Locker Pickup',
+            'Drone Delivery',
+            'Smart Route',
+            'Member Exclusive',
+        ];
+
+        foreach ($shipmentNames as $index => $shipmentName) {
+            Shipment::create([
+                'name' => $shipmentName,
+                'base_price' => 5000 + ($index * 2500),
+                'variable_price' => 10000 + ($index * 4500),
+            ]);
+        }
     }
 }

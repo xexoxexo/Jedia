@@ -6,11 +6,8 @@ use App\Models\Merchant;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductImage;
-use App\Models\ProductPromo;
 use App\Models\ProductVariant;
-use App\Models\Promo;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Storage;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -24,12 +21,18 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        static $merchantIds = null;
+        static $categoryIds = null;
+
+        $merchantIds = $merchantIds ?? Merchant::pluck('id')->all();
+        $categoryIds = $categoryIds ?? ProductCategory::pluck('id')->all();
+
         return [
-            'name' => $this->faker->word(),
+            'name' => $this->faker->words(3, true),
             'description' => $this->faker->text(),
             'condition' => $this->faker->randomElement(['New', 'Used']),
-            'merchant_id' => Merchant::all()->random()->id,
-            'product_category_id' => ProductCategory::all()->random()->id,
+            'merchant_id' => $this->faker->randomElement($merchantIds),
+            'product_category_id' => $this->faker->randomElement($categoryIds),
         ];
     }
 
@@ -37,35 +40,23 @@ class ProductFactory extends Factory
     {
         return $this->afterCreating(function (Product $product) {
             ProductImage::factory()->create([
-                'image' => function () {
-                    $filename = uniqid() . '.jpg';
-
-                    Storage::disk('public')->put('product-images/' . $filename, file_get_contents('https://source.unsplash.com/random'));
-
-                    return 'storage/product-images/' . $filename;
-                },
+                'image' => 'img/logo/logo.png',
                 'product_id' => $product->id,
             ]);
             ProductImage::factory()->create([
-                'image' => function () {
-                    $filename = uniqid() . '.jpg';
-
-                    Storage::disk('public')->put('product-images/' . $filename, file_get_contents('https://source.unsplash.com/random'));
-
-                    return 'storage/product-images/' . $filename;
-                },
+                'image' => 'img/logo/logo.png',
                 'product_id' => $product->id,
             ]);
             ProductVariant::factory()->create([
-                'name' => $this->faker->name(),
+                'name' => $this->faker->randomElement(['S', 'M', 'L', 'XL']),
                 'price' => $this->faker->numberBetween(1000, 100000),
-                'stock' => $this->faker->numberBetween(0, 20),
+                'stock' => $this->faker->numberBetween(1, 300),
                 'product_id' => $product->id,
             ]);
             ProductVariant::factory()->create([
-                'name' => $this->faker->name(),
+                'name' => $this->faker->randomElement(['Black', 'White', 'Blue', 'Red']),
                 'price' => $this->faker->numberBetween(1000, 100000),
-                'stock' => $this->faker->numberBetween(0, 20),
+                'stock' => $this->faker->numberBetween(1, 300),
                 'product_id' => $product->id,
             ]);
         });

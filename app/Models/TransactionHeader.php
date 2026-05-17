@@ -14,6 +14,19 @@ class TransactionHeader extends Model
         'user_id',
         'location_id',
         'date',
+        'payment_gateway',
+        'payment_order_id',
+        'payment_gross_amount',
+        'payment_type',
+        'payment_method',
+        'payment_status',
+        'payment_redirect_url',
+        'paid_at',
+    ];
+
+    protected $casts = [
+        'date' => 'datetime',
+        'paid_at' => 'datetime',
     ];
 
     public function details()
@@ -49,5 +62,10 @@ class TransactionHeader extends Model
     public function review($product_id, $variant_id)
     {
         return $this->reviews->where('product_id', $product_id)->where('variant_bought', $variant_id)->first();
+    }
+
+    public function isPaymentSuccessful(): bool
+    {
+        return in_array($this->payment_status, ['settlement', 'capture'], true);
     }
 }

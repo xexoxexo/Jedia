@@ -44,18 +44,20 @@ class ProfileController extends Controller
             $request->validate([
                 'dob' => ['required', 'date'],
             ]);
-            $user->tanggal_lahir = $request->dob;
+            $user->dob = $request->dob;
         }
 
         // 3. Logika Update Jenis Kelamin (Variabel form: gender)
         if ($request->filled('gender')) {
-            $user->jenis_kelamin = $request->gender;
+            $user->gender = $request->gender;
+        }
+
         // 4. Logika Update Telepon (Variabel form: phone)
         if ($request->filled('phone')) {
             $request->validate([
                 'phone' => ['required', 'numeric'],
             ]);
-            $user->telepon = $request->phone;
+            $user->phone = $request->phone;
         }
 
         // 5. Logika Update Gambar
@@ -78,7 +80,7 @@ class ProfileController extends Controller
         return redirect()->back()->with('success', 'Profil berhasil diperbarui!');
     }
 
-    public function location_index(Location $request)
+    public function location_index(Request $request)
     {
         $recommendations = Product::inRandomOrder()->limit(5)->get();
 
@@ -108,7 +110,7 @@ class ProfileController extends Controller
             'latitude' => $validated['latitude'],
             'longitude' => $validated['longitude'],
             'locationable_id' => Auth::id(),
-            'locationable_type' => User::class,
+            'locationable_type' => 'user',
         ]);
 
         return redirect()->back();

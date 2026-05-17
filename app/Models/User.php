@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\SometimesEncrypted;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -36,6 +37,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+    ];
+
+    protected $casts = [
+        'phone' => SometimesEncrypted::class,
     ];
 
     public function merchant()

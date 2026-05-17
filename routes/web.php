@@ -6,7 +6,9 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ImkController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PromoController;
@@ -37,10 +39,19 @@ Route::controller(HomeController::class)->name('home.')->group(function () {
     Route::get('/search', 'search')->name('search');
 });
 
+Route::prefix('imk')->name('imk.')->controller(ImkController::class)->group(function () {
+    Route::get('sus', 'sus')->name('sus');
+    Route::get('visualization', 'visualization')->name('visualization');
+    Route::get('download-responses', 'downloadResponses')->name('download.responses');
+    Route::get('download-question-bank', 'downloadQuestionBank')->name('download.question-bank');
+});
+
 Route::get('/categories/{id}', [HomeController::class, 'show'])->name('categories.show');
 Route::get('/promos/{id}', [PromoController::class, 'index'])->name('promos.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/merchants/{id}', [Merchant\HomeController::class, 'show'])->name('merchant.show');
+Route::get('payments/midtrans/finish', [PaymentController::class, 'finish'])->name('payments.midtrans.finish');
+Route::post('payments/midtrans/notification', [PaymentController::class, 'notification'])->name('payments.midtrans.notification');
 
 // guest only routes
 Route::middleware('guest')->group(function () {

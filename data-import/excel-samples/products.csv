@@ -1,0 +1,56 @@
+product_id,name,description,condition,merchant_id,product_category_id
+5a6d7a01-1111-4d57-92dc-001100220001,Mouse Gaming RGB,Mouse gaming DPI tinggi,New,7b8d7a01-1111-4d57-92dc-001100330001,9c0d7a01-1111-4d57-92dc-001100440001
+5a6d7a01-1111-4d57-92dc-001100220002,Keyboard Mechanical,Switch blue tactile,New,7b8d7a01-1111-4d57-92dc-001100330001,9c0d7a01-1111-4d57-92dc-001100440002
+5a6d7a01-1111-4d57-92dc-001100220003,Headset Wireless,Latency rendah untuk gaming,New,7b8d7a01-1111-4d57-92dc-001100330002,9c0d7a01-1111-4d57-92dc-001100440001
+5a6d7a01-1111-4d57-92dc-001100220004,Monitor 144Hz,Refresh rate tinggi untuk gaming,New,7b8d7a01-1111-4d57-92dc-001100330002,9c0d7a01-1111-4d57-92dc-001100440002
+5a6d7a01-1111-4d57-92dc-001100220005,SSD 1TB,Kecepatan baca/tulis tinggi,New,7b8d7a01-1111-4d57-92dc-001100330003,9c0d7a01-1111-4d57-92dc-001100440003
+5a6d7a01-1111-4d57-92dc-001100220006,Power Bank 20000mAh,Kapastias besar untuk pengisian cepat,New,7b8d7a01-1111-4d57-92dc-001100330003,9c0d7a01-1111-4d57-92dc-001100440004
+5a6d7a01-1111-4d57-92dc-001100220007,Smartphone 5G,Performa tinggi dengan konektivitas 5G,New,7b8d7a01-1111-4d57-92dc-001100330004,9c0d7a01-1111-4d57-92dc-001100440005
+5a6d7a01-1111-4d57-92dc-001100220008,Tablet 10 inch,Layar besar untuk produktivitas,New,7b8d7a01-1111-4d57-92dc-001100330004,9c0d7a01-1111-4d57-92dc-001100440006
+5a6d7a01-1111-4d57-92dc-001100220009,Smartwatch Fitness,Monitor kesehatan dan kebugaran,New,7b8d7a01-1111-4d57-92dc-001100330005,9c0d7a01-1111-4d57-92dc-001100440007
+5a6d7a01-1111-4d57-92dc-001100220010, Laptop Gaming,Performa tinggi untuk gaming,New,7b8d7a01-1111-4d57-92dc-001100330006,9c0d7a01-1111-4d57-92dc-001100440008
+5a6d7a01-1111-4d57-92dc-001100220011,Router WiFi 6,Kecepatan tinggi dengan teknologi WiFi 6,New,7b8d7a01-1111-4d57-92dc-001100330006,9c0d7a01-1111-4d57-92dc-001100440009
+5a6d7a01-1111-4d57-92dc-001100220012,Camera Mirrorless,Desain compact dengan kualitas gambar tinggi,New,7b8d7a01-1111-4d57-92dc-001100330007,9c0d7a01-1111-4d57-92dc-001100440010
+5a6d7a01-1111-4d57-92dc-001100220013,Drone Kamera,Drone dengan kamera 4K untuk fotografi udara,New,7b8d7a01-1111-4d57-92dc-001100330007,9c0d7a01-1111-4d57-92dc-001100440011
+5a6d7a01-1111-4d57-92dc-001100220014,Speaker Bluetooth,Suara jernih dengan konektivitas Bluetooth,New,7b8d7a01-1111-4d57-92dc-001100330008,9c0d7a01-1111-4d57-92dc-001100440012
+5a6d7a01-1111-4d57-92dc-001100220015,External Hard Drive 2TB,Media penyimpanan dengan kapasitas besar,New,7b8d7a01-1111-4d57-92dc-001100330008,9c0d7a01-1111-4d57-92dc-001100440013
+5a6d7a01-1111-4d57-92dc-001100220016,Smart Home Hub,Pusat kendali untuk perangkat rumah pintar,New,7b8d7a01-1111-4d57-92dc-001100330009,9c0d7a01-1111-4d57-92dc-001100440014
+5a6d7a01-1111-4d57-92dc-001100220017,Smart Light Bulb, Lampu pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330009,9c0d7a01-1111-4d57-92dc-001100440015
+5a6d7a01-1111-4d57-92dc-001100220018,Electric Scooter,Skuter listrik untuk mobilitas urban,New,7b8d7a01-1111-4d57-92dc-001100330010,9c0d7a01-1111-4d57-92dc-001100440016
+5a6d7a01-1111-4d57-92dc-001100220019,Action Camera, Kamera tahan air untuk petualangan,New,7b8d7a01-1111-4d57-92dc-001100330010,9c0d7a01-1111-4d57-92dc-001100440017
+5a6d7a01-1111-4d57-92dc-001100220020,VR Headset,Perangkat realitas virtual untuk gaming,New,7b8d7a01-1111-4d57-92dc-001100330011,9c0d7a01-1111-4d57-92dc-001100440018
+5a6d7a01-1111-4d57-92dc-001100220021,Portable Projector,Proyektor portabel untuk hiburan,New,7b8d7a01-1111-4d57-92dc-001100330011,9c0d7a01-1111-4d57-92dc-001100440019
+5a6d7a01-1111-4d57-92dc-001100220022,Wireless Charger, Pengisian nirkabel untuk perangkat kompatibel,New,7b8d7a01-1111-4d57-92dc-001100330012,9c0d7a01-1111-4d57-92dc-001100440020
+5a6d7a01-1111-4d57-92dc-001100220023,Smart Thermostat,Termostat pintar untuk pengaturan suhu,New,7b8d7a01-1111-4d57-92dc-001100330012,9c0d7a01-1111-4d57-92dc-001100440021
+5a6d7a01-1111-4d57-92dc-001100220024,Electric Bike,Sepeda listrik untuk transportasi ramah lingkungan,New,7b8d7a01-1111-4d57-92dc-001100330013,9c0d7a01-1111-4d57-92dc-001100440022
+5a6d7a01-1111-4d57-92dc-001100220025,Smart Door Lock, Kunci pintu pintar dengan fitur keamanan,New,7b8d7a01-1111-4d57-92dc-001100330013,9c0d7a01-1111-4d57-92dc-001100440023
+5a6d7a01-1111-4d57-92dc-001100220026,Air Purifier,Pembersih udara dengan filter HEPA,New,7b8d7a01-1111-4d57-92dc-001100330014,9c0d7a01-1111-4d57-92dc-001100440024
+5a6d7a01-1111-4d57-92dc-001100220027,Smart Refrigerator, Kulkas pintar dengan fitur canggih,New,7b8d7a01-1111-4d57-92dc-001100330014,9c0d7a01-1111-4d57-92dc-001100440025
+5a6d7a01-1111-4d57-92dc-001100220028,Smart Washing Machine, Mesin cuci pintar dengan konektivitas,New,7b8d7a01-1111-4d57-92dc-001100330015,9c0d7a01-1111-4d57-92dc-001100440026
+5a6d7a01-1111-4d57-92dc-001100220029,Smart Air Conditioner, AC pintar   dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330015,9c0d7a01-1111-4d57-92dc-001100440027
+5a6d7a01-1111-4d57-92dc-001100220030,Smart TV 4K,Televisi pintar dengan resolusi 4K,New,7b8d7a01-1111-4d57-92dc-001100330016,9c0d7a01-1111-4d57-92dc-001100440028
+5a6d7a01-1111-4d57-92dc-001100220031,Smart Soundbar,Soundbar pintar untuk pengalaman audio yang imersif,New,7b8d7a01-1111-4d57-92dc-001100330016,9c0d7a01-1111-4d57-92dc-001100440029
+5a6d7a01-1111-4d57-92dc-001100220032,Smart Vacuum Cleaner, Robot penyedot debu pintar,New,7b8d7a01-1111-4d57-92dc-001100330017,9c0d7a01-1111-4d57-92dc-001100440030
+5a6d7a01-1111-4d57-92dc-001100220033,Smart Coffee Maker, Mesin kopi pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330017,9c0d7a01-1111-4d57-92dc-001100440031
+5a6d7a01-1111-4d57-92dc-001100220034,Smart Oven, Oven pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330018,9c0d7a01-1111-4d57-92dc-001100440032
+5a6d7a01-1111-4d57-92dc-001100220035,Smart Microwave, Microwave pintar dengan fitur canggih,New ,7b8d7a01-1111-4d57-92dc-001100330018,9c0d7a01-1111-4d57-92dc-001100440033
+5a6d7a01-1111-4d57-92dc-001100220036,Smart Blender, Blender pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330019,9c0d7a01-1111-4d57-92dc-001100440034
+5a6d7a01-1111-4d57-92dc-001100220037,Smart Toaster, Toaster pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330019,9c0d7a01-1111-4d57-92dc-001100440035
+5a6d7a01-1111-4d57-92dc-001100220038,Smart Rice Cooker, Penanak nasi pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330020,9c0d7a01-1111-4d57-92dc-001100440036
+5a6d7a01-1111-4d57-92dc-001100220039,Smart Slow Cooker, Panci masak lambat pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330020,9c0d7a01-1111-4d57-92dc-001100440037
+5a6d7a01-1111-4d57-92dc-001100220040,Smart Air Fryer,Penggorengan udara pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330021,9c0d7a01-1111-4d57-92dc-001100440038
+5a6d7a01-1111-4d57-92dc-001100220041,Smart Grill,Grill pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330021,9c0d7a01-1111-4d57-92dc-001100440039
+5a6d7a01-1111-4d57-92dc-001100220042,Smart Air Purifier, Pembersih udara pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330022,9c0d7a01-1111-4d57-92dc-001100440040
+5a6d7a01-1111-4d57-92dc-001100220043,Smart Humidifier, Humidifier pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330022,9c0d7a01-1111-4d57-92dc-001100440041
+5a6d7a01-1111-4d57-92dc-001100220044,Smart Dehumidifier, Dehumidifier pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330023,9c0d7a01-1111-4d57-92dc-001100440042
+5a6d7a01-1111-4d57-92dc-001100220045,Smart Air Quality Monitor, Monitor kualitas udara pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330023,9c0d7a01-1111-4d57-92dc-001100440043
+5a6d7a01-1111-4d57-92dc-001100220046,Smart Water Purifier, Pemurni air pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330024,9c0d7a01-1111-4d57-92dc-001100440044
+5a6d7a01-1111-4d57-92dc-001100220047,Smart Water Heater, Pemanas air pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330024,9c0d7a01-1111-4d57-92dc-001100440045
+5a6d7a01-1111-4d57-92dc-001100220048,Smart Water Dispenser, Dispenser air pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330025,9c0d7a01-1111-4d57-92dc-001100440046
+5a6d7a01-1111-4d57-92dc-001100220049,Smart Water Filter, Filter air pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330025,9c0d7a01-1111-4d57-92dc-001100440047
+5a6d7a01-1111-4d57-92dc-001100220050,Smart Water Softener, Pelembut air pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330026,9c0d7a01-1111-4d57-92dc-001100440048
+5a6d7a01-1111-4d57-92dc-001100220051,Smart Water Leak Detector, Detektor kebocoran air pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330026,9c0d7a01-1111-4d57-92dc-001100440049
+5a6d7a01-1111-4d57-92dc-001100220052,Smart Water Flow Sensor, Sensor aliran air pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330027,9c0d7a01-1111-4d57-92dc-001100440050
+5a6d7a01-1111-4d57-92dc-001100220053,Smart Water Pressure Sensor, Sensor tekanan air pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330027,9c0d7a01-1111-4d57-92dc-001100440051
+5a6d7a01-1111-4d57-92dc-001100220054,Smart Water Quality Sensor, Sensor kualitas air pintar dengan kontrol aplikasi,New,7b8d7a01-1111-4d57-92dc-001100330028,9c0d7a01-1111-4d57-92dc-001100440052
+5a6d7a01-1111-4d57-92dc-001100220055,Smart Water Temperature Sensor, Sensor suhu air pintar dengan fitur otomatis,New,7b8d7a01-1111-4d57-92dc-001100330028,9c0d7a01-1111-4d57-92dc-001100440053

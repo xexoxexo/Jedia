@@ -99,8 +99,8 @@
                 </div>
                 <hr class="mb-2 text-gray-light">
                 <p class="flex justify-between text-xl font-bold mb-4">Shopping Total <span id="lbl-shopping-total">@money($total_price)</span></p>
-                <p class="text-gray text-sm mb-4">By purchasing products from tokoNJedia, I agree to the <span class="text-primary">terms and conditions</span></p>
-                <x-button variant="primary" type="submit" block>Proceed Transaction</x-button>
+                <p class="text-gray text-sm mb-4">By purchasing products from tokoNJedia, I agree to the <span class="text-primary">terms and conditions</span>. You will be redirected to secure online payment page.</p>
+                <x-button variant="primary" type="submit" block>Pay Online</x-button>
             </form>
         </div>
     </section>

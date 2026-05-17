@@ -1,6 +1,6 @@
 
 <footer class="border-t border-t-gray-light flex justify-center">
-    <div class="w-full max-w-screen-xl flex gap-16 py-8">
+    <div class="w-full max-w-screen-xl grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 py-8 px-4 md:px-0">
         <div>
             <p class="text-xl font-bold mb-2 text-black">TokoNJedia</p>
             <ul class="text-gray text-sm">
@@ -69,7 +69,7 @@
             </ul>
         </div>
         <div class="text-center">
-            <img src="{{ asset('img/footer/footer_img.png') }}" alt="" class="w-full h-48 mb-4">
+            <img src="{{ asset('img/footer/footer_img.png') }}" alt="" class="w-full max-w-xs mx-auto h-48 object-contain mb-4">
             <p class="text-primary font-semibold">Breaking and Overcoming Challenges<br>Through Courage, Hardwork, and Persistence<br><span class="text-gray-400">&copy; Dutisa</span></p>
         </div>
     </div>

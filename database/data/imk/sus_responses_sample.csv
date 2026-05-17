@@ -1,0 +1,55 @@
+﻿response_id,source_label,role,frequency,experience,device,network,q1,q2,q3,q4,q5,q6,q7,q8,q9,q10,submitted_at
+R001,real,Mahasiswa,3-5x,Tinggi,Mobile,WiFi,4,2,3,3,5,1,5,1,3,3,2026-05-01 08:17:00
+R002,real,Pelajar,3-5x,Rendah,Desktop,Data Seluler,5,3,3,2,4,3,4,2,5,1,2026-05-01 08:34:00
+R003,real,Pelajar,1-2x,Tinggi,Mobile,WiFi,4,1,3,3,4,1,4,2,4,2,2026-05-01 08:51:00
+R004,real,Pelajar,>5x,Tinggi,Mobile,Data Seluler,3,1,4,1,3,2,4,1,3,2,2026-05-01 09:08:00
+R005,real,Pelajar,1-2x,Tinggi,Mobile,WiFi,3,2,3,2,3,3,3,1,3,2,2026-05-01 09:25:00
+R006,real,Pelajar,1-2x,Sedang,Mobile,WiFi,3,2,3,1,3,1,5,3,5,2,2026-05-01 09:42:00
+R007,real,Umum,1-2x,Sedang,Mobile,WiFi,4,1,4,3,4,3,4,1,5,3,2026-05-01 09:59:00
+R008,real,Pelajar,>5x,Tinggi,Mobile,Data Seluler,3,1,3,3,3,1,5,2,4,3,2026-05-01 10:16:00
+R009,real,Pelajar,>5x,Rendah,Desktop,WiFi,4,3,5,1,5,2,4,3,5,3,2026-05-01 10:33:00
+R010,real,Umum,3-5x,Rendah,Desktop,WiFi,3,1,5,1,4,1,3,2,4,2,2026-05-01 10:50:00
+R011,real,Umum,1-2x,Tinggi,Desktop,Data Seluler,3,1,4,2,4,3,3,1,5,1,2026-05-01 11:07:00
+R012,real,Pelajar,1-2x,Rendah,Desktop,WiFi,3,1,4,3,4,1,4,1,5,1,2026-05-01 11:24:00
+R013,real,Pelajar,>5x,Sedang,Mobile,Data Seluler,4,3,3,1,5,3,4,2,5,1,2026-05-01 11:41:00
+R014,real,Umum,1-2x,Rendah,Mobile,WiFi,3,1,4,3,3,3,4,2,3,1,2026-05-01 11:58:00
+R015,real,Umum,>5x,Sedang,Mobile,WiFi,4,1,4,1,5,2,5,1,5,1,2026-05-01 12:15:00
+R016,real,Mahasiswa,1-2x,Rendah,Mobile,Data Seluler,3,3,5,2,4,1,4,2,5,2,2026-05-01 12:32:00
+R017,real,Mahasiswa,3-5x,Sedang,Desktop,Data Seluler,5,3,4,2,3,1,5,2,3,3,2026-05-01 12:49:00
+R018,real,Pelajar,3-5x,Rendah,Mobile,WiFi,5,1,4,3,4,3,3,1,4,3,2026-05-01 13:06:00
+R019,real,Pelajar,3-5x,Rendah,Desktop,Data Seluler,4,3,5,2,5,1,5,3,4,1,2026-05-01 13:23:00
+R020,real,Umum,1-2x,Rendah,Mobile,WiFi,4,1,5,3,3,3,3,1,5,2,2026-05-01 13:40:00
+R021,real,Pelajar,3-5x,Rendah,Desktop,Data Seluler,4,1,4,1,3,3,3,3,5,1,2026-05-01 13:57:00
+R022,real,Mahasiswa,>5x,Rendah,Desktop,Data Seluler,5,3,4,1,4,3,4,2,4,1,2026-05-01 14:14:00
+R023,real,Pelajar,1-2x,Sedang,Desktop,Data Seluler,4,2,3,2,5,2,3,1,4,3,2026-05-01 14:31:00
+R024,real,Mahasiswa,>5x,Tinggi,Mobile,Data Seluler,4,2,5,1,5,2,3,1,5,2,2026-05-01 14:48:00
+R025,real,Mahasiswa,1-2x,Tinggi,Desktop,Data Seluler,4,2,4,2,5,1,5,1,3,1,2026-05-01 15:05:00
+R026,real,Mahasiswa,3-5x,Tinggi,Mobile,WiFi,5,2,3,1,4,2,3,3,4,1,2026-05-01 15:22:00
+R027,real,Pelajar,3-5x,Rendah,Desktop,WiFi,5,1,3,1,3,1,3,3,5,2,2026-05-01 15:39:00
+R028,real,Umum,3-5x,Sedang,Desktop,Data Seluler,4,2,3,3,3,1,5,1,3,1,2026-05-01 15:56:00
+R029,real,Mahasiswa,>5x,Rendah,Desktop,Data Seluler,4,1,5,3,5,2,5,2,3,2,2026-05-01 16:13:00
+R030,real,Umum,1-2x,Rendah,Mobile,WiFi,3,3,3,3,3,1,5,2,3,1,2026-05-01 16:30:00
+R031,real,Mahasiswa,1-2x,Sedang,Desktop,Data Seluler,4,3,5,2,4,1,3,3,3,1,2026-05-01 16:47:00
+R032,real,Pelajar,3-5x,Sedang,Mobile,WiFi,4,1,5,3,4,1,4,1,4,2,2026-05-01 17:04:00
+R033,real,Mahasiswa,>5x,Sedang,Desktop,Data Seluler,5,1,3,3,3,1,3,3,3,1,2026-05-01 17:21:00
+R034,real,Umum,3-5x,Rendah,Desktop,Data Seluler,4,1,5,1,5,1,3,3,3,3,2026-05-01 17:38:00
+R035,real,Pelajar,>5x,Sedang,Mobile,Data Seluler,5,1,5,1,3,2,5,3,5,2,2026-05-01 17:55:00
+R036,dummy,Mahasiswa,1-2x,Rendah,Mobile,WiFi,4,3,3,1,3,2,5,2,3,1,2026-05-01 18:12:00
+R037,dummy,Pelajar,>5x,Sedang,Mobile,WiFi,4,1,3,2,4,3,4,3,5,3,2026-05-01 18:29:00
+R038,dummy,Pelajar,3-5x,Sedang,Mobile,Data Seluler,4,3,5,3,3,1,3,2,3,1,2026-05-01 18:46:00
+R039,dummy,Mahasiswa,>5x,Tinggi,Mobile,WiFi,4,3,4,1,5,1,4,2,3,1,2026-05-01 19:03:00
+R040,dummy,Mahasiswa,1-2x,Rendah,Mobile,Data Seluler,5,1,5,1,4,2,3,1,3,3,2026-05-01 19:20:00
+R041,dummy,Umum,1-2x,Sedang,Desktop,Data Seluler,3,1,3,2,4,2,4,3,4,2,2026-05-01 19:37:00
+R042,dummy,Mahasiswa,3-5x,Sedang,Mobile,WiFi,4,2,4,1,3,3,3,3,5,1,2026-05-01 19:54:00
+R043,dummy,Umum,3-5x,Tinggi,Desktop,WiFi,3,3,4,1,4,2,5,1,3,3,2026-05-01 20:11:00
+R044,dummy,Mahasiswa,1-2x,Rendah,Desktop,Data Seluler,5,2,5,3,4,2,3,2,4,2,2026-05-01 20:28:00
+R045,dummy,Mahasiswa,3-5x,Rendah,Desktop,Data Seluler,3,1,5,2,4,1,4,3,4,3,2026-05-01 20:45:00
+R046,dummy,Mahasiswa,1-2x,Rendah,Desktop,Data Seluler,4,3,4,3,4,2,3,3,5,1,2026-05-01 21:02:00
+R047,dummy,Mahasiswa,3-5x,Rendah,Desktop,Data Seluler,3,2,4,2,5,2,3,3,5,2,2026-05-01 21:19:00
+R048,dummy,Umum,>5x,Tinggi,Desktop,WiFi,3,2,4,3,4,1,4,3,3,2,2026-05-01 21:36:00
+R049,dummy,Mahasiswa,3-5x,Sedang,Mobile,Data Seluler,4,3,4,3,4,2,4,3,4,2,2026-05-01 21:53:00
+R050,dummy,Pelajar,3-5x,Rendah,Desktop,WiFi,4,3,3,2,4,3,4,2,4,2,2026-05-01 22:10:00
+R051,dummy,Umum,1-2x,Rendah,Mobile,WiFi,4,3,4,2,4,1,4,3,5,2,2026-05-01 22:27:00
+R052,dummy,Umum,3-5x,Rendah,Desktop,Data Seluler,4,3,4,1,5,2,4,3,4,2,2026-05-01 22:44:00
+R053,dummy,Umum,3-5x,Rendah,Desktop,Data Seluler,4,3,4,1,5,2,4,3,4,2,2026-05-01 23:01:00
+R054,dummy,Umum,3-5x,Rendah,Desktop,Data Seluler,4,3,4,1,5,2,4,3,4,2,2026-05-01 23:18:00
