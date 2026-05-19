@@ -86,7 +86,7 @@ Project ini dibangun sebagai latihan membangun marketplace modern dengan fokus p
 
 ### Cara Build ulang Project
 ***persiapkan***
-download project di releases NJedia.rar sesudah download exstract file, install composer, xampp minimal versi 8.2.12 / PHP 8.2.12 dan download PHP versi 8.2.30 
+install composer, xampp minimal versi 8.2.12 / PHP 8.2.12 dan download PHP versi 8.2.30 
 
 ***siap***
 
