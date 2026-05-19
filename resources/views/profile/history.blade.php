@@ -91,7 +91,7 @@
                                             @switch($td->status)
                                                 @case('Awaiting Payment')
                                                     @if ($th->payment_redirect_url)
-                                                        <x-button href="{{ $th->payment_redirect_url }}" variant="primary">Continue Payment</x-button>
+                                                        <x-button href="{{ route('payments.midtrans.checkout', ['transactionHeader' => $th->id]) }}" variant="primary">Continue Payment</x-button>
                                                     @else
                                                         <p class="text-sm text-gray">Waiting for payment link.</p>
                                                     @endif

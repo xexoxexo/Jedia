@@ -87,9 +87,12 @@ class CartController extends Controller
         $validated = $request->validate([
             'user-location-id' => 'required|exists:locations,id',
             'transaction_details' => 'required|string',
+            'payment_channel' => 'nullable|string|in:all,bank_transfer,credit_card,gopay_qris,store',
         ]);
 
         $locationId = $request->input('user-location-id');
+        $paymentChannel = (string) $request->input('payment_channel', 'all');
+        $enabledPayments = $this->resolveEnabledPayments($paymentChannel);
         $rawTransactionDetails = json_decode($request->transaction_details, true);
 
         if (! is_array($rawTransactionDetails)) {
@@ -240,7 +243,18 @@ class CartController extends Controller
                 ],
             ];
 
+            if (count($enabledPayments) > 0) {
+                $snapPayload['enabled_payments'] = $enabledPayments;
+            }
+
+            if ($paymentChannel === 'credit_card') {
+                $snapPayload['credit_card'] = [
+                    'secure' => true,
+                ];
+            }
+
             $snapResponse = $midtrans->createSnapTransaction($snapPayload);
+            $snapToken = $snapResponse['token'] ?? null;
             $redirectUrl = $snapResponse['redirect_url'] ?? null;
 
             if (! $redirectUrl) {
@@ -250,18 +264,40 @@ class CartController extends Controller
             $transactionHeader->update([
                 'payment_redirect_url' => $redirectUrl,
             ]);
+
+            if (! is_string($snapToken) || $snapToken === '') {
+                return redirect()->away($redirectUrl);
+            }
+
+            $transactionHeader->load([
+                'details.product.images',
+                'details.product.merchant',
+                'details.variant',
+            ]);
+
+            return view('payment.checkout', [
+                'transaction' => $transactionHeader,
+                'snapToken' => $snapToken,
+                'clientKey' => (string) config('services.midtrans.client_key'),
+                'snapScriptUrl' => $midtrans->snapJsUrl(),
+                'autoOpenSnap' => true,
+            ]);
         } catch (RuntimeException $exception) {
             Log::error('Failed to start Midtrans payment.', [
                 'transaction_id' => $transactionHeader->id,
                 'error' => $exception->getMessage(),
             ]);
 
+            $friendlyMessage = 'Transaction created, but payment gateway is unavailable. Please try again from your history page.';
+
+            if (str_contains($exception->getMessage(), 'Access denied due to unauthorized transaction')) {
+                $friendlyMessage = 'Midtrans configuration is invalid (server/client key or environment mismatch). Please contact admin.';
+            }
+
             return redirect()->route('history-transaction.index')->withErrors([
-                'payment' => 'Transaction created, but payment gateway is unavailable. Please try again from your history page.',
+                'payment' => $friendlyMessage,
             ]);
         }
-
-        return redirect()->away($transactionHeader->payment_redirect_url);
     }
 
     public function bill_store(Request $request)
@@ -285,5 +321,16 @@ class CartController extends Controller
         ]);
 
         return redirect()->route('history-transaction.index');
+    }
+
+    private function resolveEnabledPayments(string $paymentChannel): array
+    {
+        return match ($paymentChannel) {
+            'bank_transfer' => ['bank_transfer'],
+            'credit_card' => ['credit_card'],
+            'gopay_qris' => ['gopay', 'qris'],
+            'store' => ['store'],
+            default => [],
+        };
     }
 }

@@ -14,6 +14,65 @@ use RuntimeException;
 
 class PaymentController extends Controller
 {
+    public function checkout(TransactionHeader $transactionHeader, MidtransService $midtrans)
+    {
+        if (! Auth::check() || $transactionHeader->user_id !== Auth::id()) {
+            abort(403);
+        }
+
+        if ($transactionHeader->payment_gateway !== 'midtrans') {
+            return redirect()->route('history-transaction.index');
+        }
+
+        if ($transactionHeader->isPaymentSuccessful()) {
+            return redirect()->route('history-transaction.index');
+        }
+
+        $snapToken = $this->extractSnapToken($transactionHeader->payment_redirect_url);
+
+        if (! $snapToken && $transactionHeader->payment_order_id) {
+            try {
+                $statusPayload = $midtrans->getTransactionStatus($transactionHeader->payment_order_id);
+                $this->syncPaymentToDatabase($statusPayload);
+            } catch (RuntimeException $exception) {
+                Log::warning('Unable to sync Midtrans status from checkout page.', [
+                    'order_id' => $transactionHeader->payment_order_id,
+                    'error' => $exception->getMessage(),
+                ]);
+            }
+
+            $transactionHeader->refresh();
+
+            if ($transactionHeader->isPaymentSuccessful()) {
+                return redirect()->route('history-transaction.index');
+            }
+        }
+
+        if (! $snapToken && $transactionHeader->payment_redirect_url) {
+            return redirect()->away($transactionHeader->payment_redirect_url);
+        }
+
+        if (! $snapToken) {
+            return redirect()->route('history-transaction.index')->withErrors([
+                'payment' => 'Payment link is unavailable for this transaction.',
+            ]);
+        }
+
+        $transactionHeader->load([
+            'details.product.images',
+            'details.product.merchant',
+            'details.variant',
+        ]);
+
+        return view('payment.checkout', [
+            'transaction' => $transactionHeader,
+            'snapToken' => $snapToken,
+            'clientKey' => (string) config('services.midtrans.client_key'),
+            'snapScriptUrl' => $midtrans->snapJsUrl(),
+            'autoOpenSnap' => true,
+        ]);
+    }
+
     public function finish(Request $request, MidtransService $midtrans)
     {
         $orderId = (string) $request->query('order_id', '');
@@ -146,5 +205,27 @@ class PaymentController extends Controller
         }
 
         return null;
+    }
+
+    private function extractSnapToken(?string $redirectUrl): ?string
+    {
+        if (! is_string($redirectUrl) || $redirectUrl === '') {
+            return null;
+        }
+
+        $query = parse_url($redirectUrl, PHP_URL_QUERY);
+
+        if (! is_string($query) || $query === '') {
+            return null;
+        }
+
+        parse_str($query, $queryParams);
+        $token = $queryParams['token'] ?? null;
+
+        if (! is_string($token) || $token === '') {
+            return null;
+        }
+
+        return $token;
     }
 }

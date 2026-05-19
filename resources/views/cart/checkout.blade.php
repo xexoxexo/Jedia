@@ -100,7 +100,10 @@
                 <hr class="mb-2 text-gray-light">
                 <p class="flex justify-between text-xl font-bold mb-4">Shopping Total <span id="lbl-shopping-total">@money($total_price)</span></p>
                 <p class="text-gray text-sm mb-4">By purchasing products from tokoNJedia, I agree to the <span class="text-primary">terms and conditions</span>. You will be redirected to secure online payment page.</p>
-                <x-button variant="primary" type="submit" block>Pay Online</x-button>
+                <x-button id="checkout-pay-button" variant="primary" type="submit" block class="inline-flex items-center justify-center gap-2">
+                    <span id="checkout-pay-text">Pay Online</span>
+                    <span id="checkout-pay-spinner" class="hidden w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"></span>
+                </x-button>
             </form>
         </div>
     </section>
@@ -108,11 +111,16 @@
 
 @push('scripts')
     <script>
+        var isCheckoutSubmitting = false;
         var user_latitude = '{{ Auth::user()->locations[0]->latitude }}';
         var user_longitude = '{{ Auth::user()->locations[0]->longitude }}';
 
         function proceedTransaction(formElement)
         {
+            if (isCheckoutSubmitting) {
+                return;
+            }
+
             let n = document.querySelectorAll('.input-shipment').length;
 
             for (let i = 0; i < n; i++) {
@@ -150,7 +158,22 @@
             });
             document.querySelector('#transaction_details').value = JSON.stringify(transaction_details);
 
+            isCheckoutSubmitting = true;
+            setCheckoutButtonState(true);
             formElement.submit();
+        }
+
+        function setCheckoutButtonState(isLoading)
+        {
+            var button = document.getElementById('checkout-pay-button');
+            var text = document.getElementById('checkout-pay-text');
+            var spinner = document.getElementById('checkout-pay-spinner');
+
+            if (!button || !text || !spinner) return;
+
+            button.disabled = isLoading;
+            text.textContent = isLoading ? 'Preparing payment...' : 'Pay Online';
+            spinner.classList.toggle('hidden', !isLoading);
         }
 
         function selectShipment()

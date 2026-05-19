@@ -77,6 +77,9 @@ Route::middleware('guest')->group(function () {
 // authenticated user routes
 Route::middleware('auth')->group(function () {
     Route::post('logout', [HomeController::class, 'logout'])->name('logout');
+    Route::get('payments/midtrans/{transactionHeader}', [PaymentController::class, 'checkout'])
+        ->whereUuid('transactionHeader')
+        ->name('payments.midtrans.checkout');
 
     // prefix chats controllers
     Route::prefix('chats')->controller(ChatController::class)->name('chats.')->group(function () {

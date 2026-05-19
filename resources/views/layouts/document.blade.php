@@ -9,6 +9,7 @@
     {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     @vite('resources/css/app.css')
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+    @stack('head-scripts')
     @stack('styles')
 </head>
 <body class="relative">

@@ -4,10 +4,38 @@ namespace App\Services;
 
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use RuntimeException;
 
 class MidtransService
 {
+    public function snapJsUrl(): string
+    {
+        return $this->isProduction()
+            ? 'https://app.midtrans.com/snap/snap.js'
+            : 'https://app.sandbox.midtrans.com/snap/snap.js';
+    }
+
+    public function isProduction(): bool
+    {
+        $configured = (bool) config('services.midtrans.is_production', false);
+        $serverKey = $this->serverKey();
+        $inferred = $this->inferModeFromServerKey($serverKey);
+
+        if ($inferred === null) {
+            return $configured;
+        }
+
+        if ($configured !== $inferred) {
+            Log::warning('MIDTRANS_IS_PRODUCTION does not match MIDTRANS_SERVER_KEY format. Using key-derived mode.', [
+                'configured_is_production' => $configured,
+                'inferred_is_production' => $inferred,
+            ]);
+        }
+
+        return $inferred;
+    }
+
     public function createSnapTransaction(array $payload): array
     {
         try {
@@ -56,22 +84,25 @@ class MidtransService
 
     private function client(): PendingRequest
     {
+        $verifySsl = (bool) config('services.midtrans.verify_ssl', true);
+
         return Http::withBasicAuth($this->serverKey(), '')
             ->acceptJson()
             ->asJson()
+            ->withOptions(['verify' => $verifySsl])
             ->timeout(15);
     }
 
     private function snapBaseUrl(): string
     {
-        return config('services.midtrans.is_production')
+        return $this->isProduction()
             ? 'https://app.midtrans.com/snap/v1'
             : 'https://app.sandbox.midtrans.com/snap/v1';
     }
 
     private function coreBaseUrl(): string
     {
-        return config('services.midtrans.is_production')
+        return $this->isProduction()
             ? 'https://api.midtrans.com/v2'
             : 'https://api.sandbox.midtrans.com/v2';
     }
@@ -85,5 +116,18 @@ class MidtransService
         }
 
         return $serverKey;
+    }
+
+    private function inferModeFromServerKey(string $serverKey): ?bool
+    {
+        if (str_starts_with($serverKey, 'SB-Mid-server-')) {
+            return false;
+        }
+
+        if (str_starts_with($serverKey, 'Mid-server-')) {
+            return true;
+        }
+
+        return null;
     }
 }
